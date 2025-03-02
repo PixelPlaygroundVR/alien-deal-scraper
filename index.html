@@ -1,0 +1,186 @@
+---
+layout: default
+title: Home
+---
+
+<div class="hero">
+  <h1>Intergalactic Deals from Across the Web</h1>
+  <p class="hero-subtitle">Your portal to the best alien-approved deals in the universe</p>
+  
+  <div class="search-container">
+    <input type="text" id="search-deals" placeholder="Search for deals...">
+    <button class="search-button">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="filter-container">
+  <button class="filter-button active" data-filter="all">All Deals</button>
+  <button class="filter-button" data-filter="tech">Tech</button>
+  <button class="filter-button" data-filter="home">Home</button>
+  <button class="filter-button" data-filter="fashion">Fashion</button>
+  <button class="filter-button" data-filter="travel">Travel</button>
+</div>
+
+<div class="deals-grid">
+  {% for deal in site.data.deals %}
+    <div class="deal-card" data-category="tech">
+      <div class="deal-image">
+        <img src="{{ deal.image }}" alt="{{ deal.title }}">
+      </div>
+      <div class="deal-content">
+        <h3 class="deal-title">{{ deal.title }}</h3>
+        <div class="deal-price">
+          <span class="current-price">{{ deal.price }}</span>
+          <span class="original-price">{{ deal.original_price }}</span>
+          <span class="discount-badge">{{ deal.discount }}</span>
+        </div>
+        <div class="deal-meta">
+          <span class="deal-source">{{ deal.source }}</span>
+          <span class="deal-date">{{ deal.date_added | date: "%b %d" }}</span>
+        </div>
+        <a href="{{ deal.link }}" class="deal-button" target="_blank">View Deal</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="newsletter">
+  <h2>Subscribe to Alien Transmissions</h2>
+  <p>Get the latest deals beamed directly to your inbox</p>
+  
+  <form class="newsletter-form">
+    <input type="email" placeholder="your@email.com" required>
+    <button type="submit">Subscribe</button>
+  </form>
+</div>
+
+<style>
+  .hero {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(0, 255, 204, 0.8);
+  }
+  
+  .search-container {
+    display: flex;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  #search-deals {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid rgba(0, 255, 204, 0.3);
+    background: rgba(10, 15, 43, 0.8);
+    color: #00ffcc;
+    border-radius: 5px 0 0 5px;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .search-button {
+    background: linear-gradient(135deg, #ff00ff, #8a2be2);
+    border: none;
+    color: white;
+    padding: 0 1.5rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+  }
+  
+  .filter-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .filter-button {
+    background: rgba(10, 15, 43, 0.8);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    color: #00ffcc;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    transition: all 0.3s ease;
+  }
+  
+  .filter-button.active, .filter-button:hover {
+    background: rgba(0, 255, 204, 0.2);
+    border-color: #00ffcc;
+  }
+  
+  .newsletter {
+    background: rgba(10, 15, 43, 0.8);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 10px;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+  }
+  
+  .newsletter h2 {
+    margin-bottom: 0.5rem;
+  }
+  
+  .newsletter p {
+    margin-bottom: 1.5rem;
+    color: rgba(0, 255, 204, 0.8);
+  }
+  
+  .newsletter-form {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .newsletter-form input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid rgba(0, 255, 204, 0.3);
+    background: rgba(10, 15, 43, 0.8);
+    color: #00ffcc;
+    border-radius: 5px 0 0 5px;
+    font-family: 'Orbitron', sans-serif;
+  }
+  
+  .newsletter-form button {
+    background: linear-gradient(135deg, #ff00ff, #8a2be2);
+    border: none;
+    color: white;
+    padding: 0 1.5rem;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+  }
+  
+  .alien-cursor {
+    position: fixed;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: rgba(0, 255, 204, 0.5);
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.8);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 9999;
+    transition: transform 0.1s ease;
+  }
+  
+  .alien-cursor.hover {
+    transform: translate(-50%, -50%) scale(1.5);
+    background-color: rgba(255, 0, 255, 0.5);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+  }
+</style> 

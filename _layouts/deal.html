@@ -1,0 +1,41 @@
+---
+layout: default
+---
+
+<article class="deal-detail">
+  <div class="deal-header">
+    <h1 class="deal-title">{{ page.title }}</h1>
+    <div class="deal-meta">
+      <span class="deal-source">From: {{ page.source }}</span>
+      <span class="deal-date">Added: {{ page.date_added | date: "%b %d, %Y" }}</span>
+    </div>
+  </div>
+  
+  <div class="deal-content">
+    <div class="deal-image">
+      <img src="{{ page.image }}" alt="{{ page.title }}">
+    </div>
+    
+    <div class="deal-info">
+      <div class="deal-price">
+        <span class="current-price">{{ page.price }}</span>
+        <span class="original-price">{{ page.original_price }}</span>
+        <span class="discount-badge">{{ page.discount }} OFF</span>
+      </div>
+      
+      <div class="deal-description">
+        {{ content }}
+      </div>
+      
+      <a href="{{ page.link }}" class="deal-button" target="_blank">Get This Deal</a>
+    </div>
+  </div>
+  
+  <div class="deal-footer">
+    <div class="share-buttons">
+      <span>Share this deal:</span>
+      <a href="https://twitter.com/intent/tweet?text={{ page.title | url_encode }}&url={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-button twitter">Twitter</a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ page.url | absolute_url | url_encode }}" target="_blank" class="share-button facebook">Facebook</a>
+    </div>
+  </div>
+</article> 

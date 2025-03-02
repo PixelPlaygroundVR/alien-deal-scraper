@@ -1,0 +1,139 @@
+---
+layout: default
+title: About
+permalink: /about/
+---
+
+<div class="about-container">
+  <h1>About Alien Deal Scraper</h1>
+  
+  <div class="about-content">
+    <div class="about-image">
+      <img src="{{ '/assets/images/alien-about.svg' | relative_url }}" alt="Alien with shopping cart">
+    </div>
+    
+    <div class="about-text">
+      <h2>Our Mission</h2>
+      <p>Welcome, Earthlings! The Alien Deal Scraper was created by a team of intergalactic deal hunters who have traveled across the cosmos to bring you the best deals from your planet's internet.</p>
+      
+      <p>Our advanced alien technology scans the web for the most valuable offers, ensuring you never miss out on a great deal. Whether you're looking for tech gadgets, home goods, or fashion items, our scraper will find the best prices for you.</p>
+      
+      <h2>How It Works</h2>
+      <p>Our sophisticated alien algorithms crawl various deal websites hourly, analyzing prices, discounts, and popularity to bring you only the most worthwhile deals. We use our advanced pattern recognition technology (far superior to Earth's AI) to filter out mediocre offers.</p>
+      
+      <p>The deals are then beamed directly to our website, where you can browse, search, and filter them based on your preferences. Each deal is verified by our team of alien experts to ensure its quality and value.</p>
+      
+      <h2>Legal Information</h2>
+      <p>Alien Deal Scraper respects the terms of service of all websites we scrape. We ensure our scraping activities do not overload servers or violate any Earth laws (which we find quite primitive, but we comply nonetheless).</p>
+      
+      <p>We do not store any personal information from the websites we scrape, and we only display publicly available information. All deals link directly to the original source, where you can make your purchase.</p>
+      
+      <h2>Contact Us</h2>
+      <p>Have questions, feedback, or want to report an issue? Send us a telepathic message, or if your species hasn't evolved that capability yet, use the form below:</p>
+      
+      <form class="contact-form">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<style>
+  .about-container {
+    background: rgba(10, 15, 43, 0.8);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    border-radius: 10px;
+    padding: 2rem;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.3);
+  }
+  
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+    margin-top: 2rem;
+    
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .about-image {
+    text-align: center;
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+    }
+  }
+  
+  .about-text {
+    h2 {
+      margin-top: 1.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+    }
+    
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+  
+  .contact-form {
+    margin-top: 2rem;
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #00ffcc;
+    }
+    
+    input, textarea {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid rgba(0, 255, 204, 0.3);
+      background: rgba(10, 15, 43, 0.8);
+      color: #00ffcc;
+      border-radius: 5px;
+      font-family: 'Orbitron', sans-serif;
+    }
+    
+    button {
+      background: linear-gradient(135deg, #ff00ff, #8a2be2);
+      border: none;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-family: 'Orbitron', sans-serif;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(138, 43, 226, 0.4);
+      }
+    }
+  }
+</style> 

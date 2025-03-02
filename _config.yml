@@ -1,0 +1,48 @@
+title: Alien Deal Scraper
+description: Intergalactic deals from across the web!
+baseurl: "/alien-deal-scraper"
+url: "https://yourusername.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .github
+  - scraper.py
+  - requirements.txt
+  - update.sh
+  - README.md
+  - .gitignore
+
+# Collections
+collections:
+  deals:
+    output: true
+    permalink: /deals/:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "deals"
+    values:
+      layout: "deal"
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+    values:
+      layout: "default" 

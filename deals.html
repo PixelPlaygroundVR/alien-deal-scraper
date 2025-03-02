@@ -1,0 +1,194 @@
+---
+layout: default
+title: All Deals
+permalink: /deals/
+---
+
+<div class="deals-header">
+  <h1>All Intergalactic Deals</h1>
+  <p class="deals-subtitle">Browse all our alien-approved deals from across the universe</p>
+  
+  <div class="deals-controls">
+    <div class="search-container">
+      <input type="text" id="search-deals" placeholder="Search for deals...">
+      <button class="search-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+      </button>
+    </div>
+    
+    <div class="sort-container">
+      <label for="sort-deals">Sort by:</label>
+      <select id="sort-deals">
+        <option value="newest">Newest</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+        <option value="discount">Biggest Discount</option>
+      </select>
+    </div>
+  </div>
+  
+  <div class="filter-container">
+    <button class="filter-button active" data-filter="all">All Deals</button>
+    <button class="filter-button" data-filter="tech">Tech</button>
+    <button class="filter-button" data-filter="home">Home</button>
+    <button class="filter-button" data-filter="fashion">Fashion</button>
+    <button class="filter-button" data-filter="travel">Travel</button>
+  </div>
+</div>
+
+<div class="deals-grid">
+  {% for deal in site.data.deals %}
+    <div class="deal-card" data-category="tech">
+      <div class="deal-image">
+        <img src="{{ deal.image }}" alt="{{ deal.title }}">
+      </div>
+      <div class="deal-content">
+        <h3 class="deal-title">{{ deal.title }}</h3>
+        <div class="deal-price">
+          <span class="current-price">{{ deal.price }}</span>
+          <span class="original-price">{{ deal.original_price }}</span>
+          <span class="discount-badge">{{ deal.discount }}</span>
+        </div>
+        <div class="deal-meta">
+          <span class="deal-source">{{ deal.source }}</span>
+          <span class="deal-date">{{ deal.date_added | date: "%b %d" }}</span>
+        </div>
+        <a href="{{ deal.link }}" class="deal-button" target="_blank">View Deal</a>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+<div class="pagination">
+  <a href="#" class="pagination-prev disabled">Previous</a>
+  <span class="pagination-current">Page 1 of 1</span>
+  <a href="#" class="pagination-next disabled">Next</a>
+</div>
+
+<style>
+  .deals-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .deals-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: rgba(0, 255, 204, 0.8);
+  }
+  
+  .deals-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+    
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .search-container {
+      display: flex;
+      flex: 1;
+      max-width: 500px;
+      
+      @media (max-width: 768px) {
+        max-width: 100%;
+      }
+    }
+    
+    .sort-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      
+      label {
+        color: #00ffcc;
+      }
+      
+      select {
+        padding: 0.5rem;
+        border: 2px solid rgba(0, 255, 204, 0.3);
+        background: rgba(10, 15, 43, 0.8);
+        color: #00ffcc;
+        border-radius: 5px;
+        font-family: 'Orbitron', sans-serif;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    gap: 1rem;
+    
+    a {
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(0, 255, 204, 0.3);
+      border-radius: 5px;
+      transition: all 0.3s ease;
+      
+      &:hover:not(.disabled) {
+        background: rgba(0, 255, 204, 0.2);
+        border-color: #00ffcc;
+      }
+      
+      &.disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+    
+    .pagination-current {
+      padding: 0.5rem 1rem;
+      color: rgba(0, 255, 204, 0.8);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Sort functionality
+    const sortSelect = document.getElementById('sort-deals');
+    if (sortSelect) {
+      sortSelect.addEventListener('change', function() {
+        const sortValue = this.value;
+        const deals = Array.from(document.querySelectorAll('.deal-card'));
+        
+        deals.sort((a, b) => {
+          if (sortValue === 'newest') {
+            const dateA = new Date(a.querySelector('.deal-date').textContent);
+            const dateB = new Date(b.querySelector('.deal-date').textContent);
+            return dateB - dateA;
+          } else if (sortValue === 'price-low') {
+            const priceA = parseFloat(a.querySelector('.current-price').textContent.replace(/[^0-9.-]+/g, ''));
+            const priceB = parseFloat(b.querySelector('.current-price').textContent.replace(/[^0-9.-]+/g, ''));
+            return priceA - priceB;
+          } else if (sortValue === 'price-high') {
+            const priceA = parseFloat(a.querySelector('.current-price').textContent.replace(/[^0-9.-]+/g, ''));
+            const priceB = parseFloat(b.querySelector('.current-price').textContent.replace(/[^0-9.-]+/g, ''));
+            return priceB - priceA;
+          } else if (sortValue === 'discount') {
+            const discountA = parseInt(a.querySelector('.discount-badge').textContent);
+            const discountB = parseInt(b.querySelector('.discount-badge').textContent);
+            return discountB - discountA;
+          }
+          return 0;
+        });
+        
+        const dealsGrid = document.querySelector('.deals-grid');
+        deals.forEach(deal => dealsGrid.appendChild(deal));
+      });
+    }
+  });
+</script> 

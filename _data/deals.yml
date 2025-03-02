@@ -1,0 +1,48 @@
+- title: Alien Blaster 3000 - Example Deals
+  price: $49.99
+  original_price: $99.99
+  discount: 50%
+  link: https://example.com/product/alien-blaster
+  image: https://example.com/images/alien-blaster.jpg
+  source: Example Deals
+  date_added: '2025-03-02 13:53:24'
+- title: UFO Detection Kit - Example Deals
+  price: $29.99
+  original_price: $59.99
+  discount: 50%
+  link: https://example.com/product/ufo-detector
+  image: https://example.com/images/ufo-detector.jpg
+  source: Example Deals
+  date_added: '2025-03-02 13:53:24'
+- title: Martian Translator - Example Deals
+  price: $19.99
+  original_price: $39.99
+  discount: 50%
+  link: https://example.com/product/martian-translator
+  image: https://example.com/images/martian-translator.jpg
+  source: Example Deals
+  date_added: '2025-03-02 13:53:24'
+- title: Alien Blaster 3000 - Sample Shop
+  price: $49.99
+  original_price: $99.99
+  discount: 50%
+  link: https://example.com/product/alien-blaster
+  image: https://example.com/images/alien-blaster.jpg
+  source: Sample Shop
+  date_added: '2025-03-02 13:53:26'
+- title: UFO Detection Kit - Sample Shop
+  price: $29.99
+  original_price: $59.99
+  discount: 50%
+  link: https://example.com/product/ufo-detector
+  image: https://example.com/images/ufo-detector.jpg
+  source: Sample Shop
+  date_added: '2025-03-02 13:53:26'
+- title: Martian Translator - Sample Shop
+  price: $19.99
+  original_price: $39.99
+  discount: 50%
+  link: https://example.com/product/martian-translator
+  image: https://example.com/images/martian-translator.jpg
+  source: Sample Shop
+  date_added: '2025-03-02 13:53:26'
